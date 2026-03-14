@@ -36,7 +36,7 @@ const getKpiTitle = (kpi: SelectedKPI) => {
   }
 };
 
-const TimeSeriesChart: React.FC<TimeSeriesChartProps> = ({ selectedKpi, dateRange }) => {
+const TimeSeriesChart: React.FC<TimeSeriesChartProps> = ({ selectedKpi }) => {
   // In a real app, dateRange would trigger a refetch. Here we use mock data.
   const data: HistoricalData[] = useMemo(() => generateHistoricalData(), []);
   const color = getChartColor(selectedKpi);
