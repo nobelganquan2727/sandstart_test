@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { ConfigProvider, theme } from 'antd';
 import Dashboard from './components/Dashboard';
 

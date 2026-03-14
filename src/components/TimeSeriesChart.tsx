@@ -7,7 +7,6 @@ import { Skeleton } from 'antd';
 
 interface TimeSeriesChartProps {
   selectedKpi: SelectedKPI;
-  dateRange: [string, string];
 }
 
 const formatYAxis = (value: number, kpi: SelectedKPI) => {
@@ -36,7 +35,7 @@ const getKpiTitle = (kpi: SelectedKPI) => {
   }
 };
 
-const TimeSeriesChart: React.FC<TimeSeriesChartProps> = ({ selectedKpi, dateRange }) => {
+const TimeSeriesChart: React.FC<TimeSeriesChartProps> = ({ selectedKpi }) => {
   // In a real app, dateRange would trigger a refetch. Here we use mock data.
   const data: HistoricalData[] = useMemo(() => generateHistoricalData(), []);
   const color = getChartColor(selectedKpi);
@@ -55,35 +54,35 @@ const TimeSeriesChart: React.FC<TimeSeriesChartProps> = ({ selectedKpi, dateRang
         >
           <defs>
             <linearGradient id={`color-${selectedKpi}`} x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor={color} stopOpacity={0.8}/>
-              <stop offset="95%" stopColor={color} stopOpacity={0}/>
+              <stop offset="5%" stopColor={color} stopOpacity={0.8} />
+              <stop offset="95%" stopColor={color} stopOpacity={0} />
             </linearGradient>
           </defs>
           <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f0f0f0" />
-          <XAxis 
-            dataKey="date" 
-            axisLine={false} 
-            tickLine={false} 
-            tick={{ fill: '#888', fontSize: 12 }} 
+          <XAxis
+            dataKey="date"
+            axisLine={false}
+            tickLine={false}
+            tick={{ fill: '#888', fontSize: 12 }}
             minTickGap={30}
           />
-          <YAxis 
+          <YAxis
             tickFormatter={(val) => formatYAxis(val, selectedKpi)}
             axisLine={false}
             tickLine={false}
             tick={{ fill: '#888', fontSize: 12 }}
           />
-          <Tooltip 
+          <Tooltip
             contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }}
             labelStyle={{ fontWeight: 'bold', color: '#333' }}
           />
-          <Area 
-            type="monotone" 
-            dataKey={selectedKpi} 
-            stroke={color} 
+          <Area
+            type="monotone"
+            dataKey={selectedKpi}
+            stroke={color}
             strokeWidth={3}
-            fillOpacity={1} 
-            fill={`url(#color-${selectedKpi})`} 
+            fillOpacity={1}
+            fill={`url(#color-${selectedKpi})`}
             animationDuration={1500}
           />
         </AreaChart>
