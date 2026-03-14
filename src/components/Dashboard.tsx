@@ -11,7 +11,8 @@ import {
   BulbOutlined,
   BulbFilled,
   LogoutOutlined,
-  ProfileOutlined
+  ProfileOutlined,
+  ExperimentOutlined
 } from '@ant-design/icons';
 import GlobalFilters from './GlobalFilters';
 import KPIGrid from './KPIGrid';
@@ -20,6 +21,7 @@ import DataExplorer from './DataExplorer';
 import MachinesView from './MachinesView';
 import LogisticsView from './LogisticsView';
 import SettingsView from './SettingsView';
+import TestCasesView from './TestCasesView';
 
 const { Header, Content, Footer, Sider } = Layout;
 const { Title } = Typography;
@@ -81,6 +83,7 @@ const Dashboard: React.FC<DashboardProps> = ({ isDarkMode, toggleTheme }) => {
           <Menu.Item key="1" icon={<BarChartOutlined />}>Dashboard</Menu.Item>
           <Menu.Item key="2" icon={<AppstoreOutlined />}>Machines</Menu.Item>
           <Menu.Item key="4" icon={<GlobalOutlined />}>Logistics</Menu.Item>
+          <Menu.Item key="6" icon={<ExperimentOutlined />}>Test Cases</Menu.Item>
           <Menu.Item key="5" icon={<SettingOutlined />}>Settings</Menu.Item>
         </Menu>
       </Sider>
@@ -151,6 +154,7 @@ const Dashboard: React.FC<DashboardProps> = ({ isDarkMode, toggleTheme }) => {
 
             {activeTab === '2' && <MachinesView />}
             {activeTab === '4' && <LogisticsView />}
+            {activeTab === '6' && <TestCasesView />}
             {activeTab === '5' && <SettingsView />}
 
           </div>
