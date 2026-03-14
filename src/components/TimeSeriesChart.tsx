@@ -7,6 +7,7 @@ import { Skeleton } from 'antd';
 
 interface TimeSeriesChartProps {
   selectedKpi: SelectedKPI;
+  dateRange: [string, string];
 }
 
 const formatYAxis = (value: number, kpi: SelectedKPI) => {
@@ -35,7 +36,7 @@ const getKpiTitle = (kpi: SelectedKPI) => {
   }
 };
 
-const TimeSeriesChart: React.FC<TimeSeriesChartProps> = ({ selectedKpi }) => {
+const TimeSeriesChart: React.FC<TimeSeriesChartProps> = ({ selectedKpi, dateRange }) => {
   // In a real app, dateRange would trigger a refetch. Here we use mock data.
   const data: HistoricalData[] = useMemo(() => generateHistoricalData(), []);
   const color = getChartColor(selectedKpi);
